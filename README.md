@@ -5,6 +5,8 @@ Path finding using group oriented programming.
 BSD license.  
 For version log, see the individual files.  
 
+![Screenshot](https://github.com/bvssvni/lua-pathmap/blob/master/screenshot.png)
+
 To run the example you need to install LÖVE 2D game engine:  
 https://love2d.org/
 
