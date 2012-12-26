@@ -8,16 +8,20 @@ http://www.cutoutpro.com
 Version: 0.000 in angular degrees version notation
 http://isprogrammingeasy.blogspot.no/2012/08/angular-degrees-versioning-notation.html
 
+For an NxN map, using group bitstreams increases memory with 4N^2.
+The raw data requires one map per pixel, which increases memory N^4.
+
+In raw data, a complete solved 1000x1000 map requires 1 trillion pixels, which doesn't fit inside memory.
+A map with 1000x1000 resolution requires only 4 million groups.
+
+Each groups doesn't take a lot of memory since neighbor pixels tend to clump together.
+If a row of pixels all belong to the same group, it takes only two numbers to represent that row.
+
 This solver uses pixels with maximum 4 directions.
 A group is generated for each direction per pixel that tells "shortest path direction" to other pixels.
 
-Using group oriented programming with group bitstreams makes it possible to store 
-much larger maps in memory, which makes it suitable for advanced game AI.
-For an NxN map, the group oriented approach increases 4N^2.
-The raw data requires one map per pixel, which increases N^4.
-
-For example 1000x1000 resolution map require only 4 million groups.
-In raw data, this would require 1 trillion pixels, which doesn't fit inside memory.
+Using group oriented programming with group bitstreams makes it possible to store
+much larger maps in memory, which makes it suitable for advanced game AI. 
 
 --]]
 
