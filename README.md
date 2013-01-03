@@ -7,6 +7,8 @@ For version log, see the individual files.
 
 ![Screenshot](https://github.com/bvssvni/lua-pathmap/blob/master/screenshot.png)
 
+Example: Download "pathmap-example.love".
+
 To run the example you need to install LÖVE 2D game engine:  
 https://love2d.org/
 
