@@ -7,14 +7,15 @@ test.run()
 
 -- Set up map.
 local map = {
-  {3, 5, 5, 6},
-  {11, 5, 6, 10},
-  {10, 1, 12, 10},
-  {9, 5, 5, 12},
+  {3, 5, 5, 6, 1, 6},
+  {11, 5, 6, 10, 0, 10},
+  {10, 1, 12, 10, 0, 10},
+  {9, 15, 5, 13, 5, 12},
+  {3, 12},
 }
 
 local units = 30
-local rect = {x = 1, y = 1, w = 4, h = 4}
+local rect = {x = 1, y = 1, w = 6, h = 5}
 local direction = 0
 local bufMap
 local gr = pathmap.solve(map, rect) -- Generate groups from the map.
