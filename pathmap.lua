@@ -60,6 +60,27 @@ local pathmap = {}
 -- 4 - left
 -- 8 - up
 
+-- Returns a group associated with a location and direction in the solution.
+-- solution - A list of groups.
+-- x - The x coordinate of the current location.
+-- y - The y coordinate of the current location.
+-- stride - The maximum number of columns.
+-- direction:
+--   0 - right
+--   1 - down
+--   2 - left
+--   3 - up
+-- off - The index offset for x and y coordinates, 0 for 0 based.
+function pathmap.groupInSolution(solution, x, y, stride, direction, off)
+  assert(x, "Missing argument 'x'")
+  assert(y, "Missing argument 'y'")
+  assert(stride, "Missing argument 'stride'")
+  assert(off, "Missing argument 'off'")
+  
+  local coord = (x-off) + (y-off) * stride
+  return solution[coord * 4 + 1 + direction]
+end
+
 -- Finds the directions of a value.
 function pathmap.getDirections(val)
   local up = val % 16 >= 8
@@ -197,10 +218,10 @@ end
 -- A group uses a the with of rectangle as stride.
 function pathmap.solve(rows, rect)
   local gr = {}
-  for i, _ in pairs(rows) do
-    local r = rows[i]
-    if r then
-      for j, _ in pairs(r) do
+  for i, r in pairs(rows) do
+    if type(r) == "table" then
+      local n = #r
+      for j = 1, n do
         local x, y = j, i
         local buf = pathmap.solveCoord(rows, x, y, rect)
         addToGroups(buf, gr, rect.w, x, y)

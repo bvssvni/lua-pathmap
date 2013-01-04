@@ -44,8 +44,7 @@ function love.update()
     bufMap = pathmap.solveCoord(map, nx, ny, rect)
     
     local stride = rect.w
-    local coord = (nx-1) + (ny-1) * stride
-    g = gr[coord * 4 + 1 + direction]
+    g = pathmap.groupInSolution(gr, nx, ny, stride, direction, 1)
   else
     nx, ny = nil, nil
     g = nil
